@@ -9,9 +9,14 @@ trait SparkContextConfig {
   private val config =  ConfigFactory.load()
 
   private lazy val sparkConf = {
-    val master = "local[4]" //get from config - set ip of spark cluster
-    new SparkConf().
-          setMaster(master)
+    val master = "spark://103.56.92.23:7077" //get from config - set ip of spark cluster
+    new SparkConf()
+          .setMaster(master)
+          .setAppName("meglytics")
+          .set("spark.driver.allowMultipleContexts", "true")
+          .set("spark.executor.extraClassPath", "/root/spark-1.5.1/lib/mysql-connector-java-5.1.34.jar")
+
   }
-  lazy val sc = new SparkContext(sparkConf)
+   val sc = new SparkContext(sparkConf)
+
 }

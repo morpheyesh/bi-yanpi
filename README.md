@@ -1,2 +1,3 @@
-# bi-yanpi
-Business Intelligence core 
+# MeglyticsBI - Core
+
+ Query processing template for meglticsBI that runs with apache spark.  
