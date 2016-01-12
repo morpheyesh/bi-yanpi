@@ -2,6 +2,7 @@ package bi.megam
 
 import org.apache.spark.{SparkConf, SparkContext}
 import com.typesafe.config.{ Config, ConfigFactory }
+import org.apache.spark.sql.SQLContext
 
 
 trait SparkContextConfig {
@@ -15,8 +16,10 @@ trait SparkContextConfig {
           .setAppName("meglytics")
           .set("spark.driver.allowMultipleContexts", "true")
           .set("spark.executor.extraClassPath", "/root/spark-1.5.1/lib/mysql-connector-java-5.1.34.jar")
-
   }
-   val sc = new SparkContext(sparkConf)
+   lazy val sc = new SparkContext(sparkConf)
+}
 
+trait SqlContext extends SparkContextConfig {
+   val sqlContext = new SQLContext(sc)
 }

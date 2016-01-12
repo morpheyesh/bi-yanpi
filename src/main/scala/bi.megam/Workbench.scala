@@ -45,6 +45,4 @@ case class WorkBench(d: Any) extends RConn {
      val data = Map("mysql" -> Map("user:pass" -> List("table1", "table2")))
      return data
   }
-
-  //
 }
