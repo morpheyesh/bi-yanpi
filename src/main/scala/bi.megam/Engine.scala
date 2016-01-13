@@ -2,7 +2,7 @@ package bi.megam
 
 import org.apache.spark.sql.DataFrame
 
-case class Engine(query: String, df: Set[DataFrame]) {
+case class Engine(query: String, df: Set[List[DataFrame]]) {
   private def applyRules(q: String) {
     //apply rules
   }
