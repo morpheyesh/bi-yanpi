@@ -32,6 +32,7 @@ import scala.util.Try
 import org.megam.common.riak.GunnySack
 import scala.collection.JavaConverters._
 import org.apache.spark.sql.SQLContext
+import bi.megam.Constants._
 
 
 object Main extends spark.jobserver.SparkJob with SparkContextConfig {
@@ -47,8 +48,8 @@ object Main extends spark.jobserver.SparkJob with SparkContextConfig {
     //listDF contains df of all the tables of all datasources provided.
       val listDF = config.getObjectList("input.json.connectors").asScala.map(_.unwrapped())
       .map(i =>
-        Connectors(sc, i.get("source").toString, i.get("cred").toString, i.get("tables").toString, i.get("db").toString, i.get("endpoint").toString, i.get("port").toString)).toSet
-        val data = Engine(config.getObject("input.json").toString, listDF)
+        Connectors(sc, i.get(SOURCE).toString, i.get(CREDENTIALS).toString, i.get(TABLES).toString, i.get(DBNAME).toString, i.get(ENDPOINT).toString, i.get(PORT).toString)).toList
+        val data = Engine(config.getString("input.json.query"), listDF).execute()
       sc.stop()
    return listDF
 

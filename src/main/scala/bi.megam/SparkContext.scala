@@ -28,7 +28,7 @@ trait SqlContext { //this needs to extend sparkcontextconfig and sqlcontext shou
   def executeAnalysis(sc: SparkContext, tableName: String, url: String, prop: java.util.Properties): DataFrame = {
 
     val p = new SQLContext(sc).read.jdbc(url,tableName,prop)
-    println(p.show())
+      println(p.show())
     return p
 
 

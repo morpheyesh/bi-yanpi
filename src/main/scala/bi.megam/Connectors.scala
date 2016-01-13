@@ -26,6 +26,7 @@ import org.apache.spark.SparkContext, SparkContext._
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.sql.DataFrame
 import java.sql.DriverManager
+import bi.megam.Constants._
 
 
 
@@ -48,11 +49,11 @@ object Connectors  {
 
     def get(): List[DataFrame] = {
 
-      val url="jdbc:mysql://" + ep + ":" + port + "/" + db //move this to a common ep builder fn
+      val url= MYSQL + "://" + ep + ":" + port + "/" + db //move this to a common ep builder fn
       val prop = new java.util.Properties
 
-      prop.setProperty("user", c.split(":")(0))
-      prop.setProperty("password", c.split(":")(1))
+      prop.setProperty(USER, c.split(":")(0))
+      prop.setProperty(PASSWORD, c.split(":")(1))
     //  t.split(" ").map(x => executeAnalysis(sc, x, url, prop))
       val pet = t.split(" ").map(x => new SQLContext(sc).read.jdbc(url, x, prop)).toList
     //  val pet = new SQLContext(sc).read.jdbc(url,"pet",prop)
@@ -64,14 +65,15 @@ object Connectors  {
 
     def get(): List[DataFrame] = {
 
-      val url="jdbc:mysql://103.56.92.47:3306/fooDatabase"
+      val url= MYSQL + "://" + ep + ":" + port + "/" + db //move this to a common ep builder fn
       val prop = new java.util.Properties
-      prop.setProperty("user", "fooUser")
-      prop.setProperty("password", "megam")
 
+      prop.setProperty(USER, c.split(":")(0))
+      prop.setProperty(PASSWORD, c.split(":")(1))
+    //  t.split(" ").map(x => executeAnalysis(sc, x, url, prop))
       val pet = t.split(" ").map(x => new SQLContext(sc).read.jdbc(url, x, prop)).toList
-
-     return pet
-
+    //  val pet = new SQLContext(sc).read.jdbc(url,"pet",prop)
+    //  println(pet.show())
+      return pet
     }
   }
