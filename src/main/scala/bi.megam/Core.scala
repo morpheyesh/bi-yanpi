@@ -51,7 +51,7 @@ object Main extends spark.jobserver.SparkJob with SparkContextConfig {
         Connectors(sc, i.get(SOURCE).toString, i.get(CREDENTIALS).toString, i.get(TABLES).toString, i.get(DBNAME).toString, i.get(ENDPOINT).toString, i.get(PORT).toString)).toList
         val data = Engine(config.getString("input.json.query"), listDF).execute()
       sc.stop()
-   return listDF
+   return data
 
   }
 }

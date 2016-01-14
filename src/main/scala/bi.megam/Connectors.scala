@@ -30,7 +30,7 @@ import bi.megam.Constants._
 
 
 
-trait Connectors //extends SqlContext
+trait Connectors 
 object Connectors  {
   def apply(sc: SparkContext, source: String, cred: String, tables: String, db: String, ep: String, port: String): List[DataFrame] = source match {
     case "mysql" => return new Mysql(sc, cred, tables, db, ep, port).get()
