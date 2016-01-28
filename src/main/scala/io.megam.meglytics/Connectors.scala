@@ -19,18 +19,18 @@
  *
  */
 
-package bi.megam
+package io.megam.meglytics
 
 import org.apache.spark.SparkContext._
 import org.apache.spark.SparkContext, SparkContext._
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.sql.DataFrame
 import java.sql.DriverManager
-import bi.megam.Constants._
+import io.megam.meglytics.Constants._
 
 
 
-trait Connectors 
+trait Connectors
 object Connectors  {
   def apply(sc: SparkContext, source: String, cred: String, tables: String, db: String, ep: String, port: String): List[DataFrame] = source match {
     case "mysql" => return new Mysql(sc, cred, tables, db, ep, port).get()

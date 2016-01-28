@@ -1,4 +1,4 @@
-package bi.megam
+package io.megam.meglytics
 
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql._
