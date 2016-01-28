@@ -1,4 +1,4 @@
-package bi.megam
+package io.megam.meglytics
 
 import org.apache.spark.{SparkConf, SparkContext}
 import com.typesafe.config.{ Config, ConfigFactory }

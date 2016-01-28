@@ -20,8 +20,10 @@
  */
 
 
-package bi.megam
+package io.megam.meglytics
 
+
+import io.megam.meglytics.Constants._
 import org.apache.spark._
 import org.apache.spark._
 import org.apache.spark.SparkContext._
@@ -32,7 +34,7 @@ import scala.util.Try
 import org.megam.common.riak.GunnySack
 import scala.collection.JavaConverters._
 import org.apache.spark.sql.SQLContext
-import bi.megam.Constants._
+
 
 
 object Main extends spark.jobserver.SparkJob with SparkContextConfig {

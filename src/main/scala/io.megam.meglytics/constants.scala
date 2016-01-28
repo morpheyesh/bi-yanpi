@@ -1,4 +1,4 @@
-package bi.megam
+package io.megam.meglytics
 
 
 object Constants {
