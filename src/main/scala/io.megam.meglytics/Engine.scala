@@ -18,21 +18,24 @@ val p =  natjoin(tables(0), tables(1))
     //yet to apply rules
        return q.split(" ").toList
   }
-def appd(x: String , f: List[Array[Any]]) = {
-  println(f)
-  var l = f.length
-  var inc = 0
-  if (inc <= l) {
-    x ++ f(inc)
-  }
+def appd(x: String , a: List[Array[Any]]) = {
+  println(a)
 
+val c:Array[Any] =Array(x)
+println(c)
+val d = c :: a
+println(d)
+val f = d.flatten
+ f
 }
   def execute(): List[Any] = {
     val newQuery = applyRules(query)
+
    val d = df.map(x => singleSource(x))
     val q = newQuery.map( x => d(0).select(x))
-    val f = q.map(_.rdd.map(r => r(0)).collect())
+    val f: List[Array[Any]] = q.map(_.rdd.map(r => r(0)).collect())
     val n = newQuery.map(x => appd(x,f))
+  //  val n = appd(newQuery,f)
    println(n)
    println(f)
   return n
