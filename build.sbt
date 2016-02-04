@@ -1,6 +1,6 @@
-name := "meglytics-bi-core"
+name := "meglytics"
 
-version := "0.1"
+version := "0.2"
 
 scalaVersion := "2.11.7"
 
@@ -14,21 +14,5 @@ libraryDependencies ++= Seq (
   "org.apache.spark" %% "spark-core" % "1.5.1" % "provided",
   "org.apache.spark" %% "spark-sql" % "1.3.0",
   "com.typesafe.akka" %% "akka-actor" % "2.3.9" % "provided",
-  "io.megam" %% "libcommon" % "0.22" % "provided"
-
+  "io.megam" %% "libcommon" % "0.26" % "provided"
 )
-/*
- mergeStrategy in assembly <<= (mergeStrategy in assembly) { (old) => {
-
-   case x if x.endsWith(".class") => MergeStrategy.first
-   case PathList("META-INF", xs @ _*) =>
-     (xs map {_.toLowerCase}) match {
-       case _ =>
-         MergeStrategy.discard
-     }
-     case PathList(ps @ _*) if ps.last endsWith ".html" => MergeStrategy.first
-     case PathList(ps @ _*) if ps.last endsWith ".conf" => MergeStrategy.first
-     case PathList(ps @ _*) if ps.last endsWith ".txt" => MergeStrategy.discard
-
-  case _ => MergeStrategy.deduplicate }}
-*/
