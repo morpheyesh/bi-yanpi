@@ -1,3 +1,3 @@
-# MeglyticsBI - Core
+# Meglytics
 
- Query processing template for meglticsBI that runs with apache spark.  
+ Query processing template for Meglytics that runs with apache spark.  
