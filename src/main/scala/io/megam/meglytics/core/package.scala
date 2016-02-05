@@ -1,3 +1,3 @@
-type ConnectorTables = List[ConnectorTables]
+//type ConnectorTables = List[ConnectorTables]
 
-type ConnectorFrames = List[ConnectorFrame]
+//type ConnectorFrames = List[ConnectorFrame]

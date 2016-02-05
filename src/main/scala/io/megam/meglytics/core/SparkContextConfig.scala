@@ -1,4 +1,4 @@
-package io.megam.meglytics
+package io.megam.meglytics.core
 
 import org.apache.spark.{SparkConf, SparkContext}
 import com.typesafe.config.{ Config, ConfigFactory }
@@ -11,7 +11,7 @@ trait SparkContextConfig {
   private val config =  ConfigFactory.load()
 
   private lazy val sparkConf = {
-    val master = "spark://103.56.92.23:7077" //get from config - set ip of spark cluster
+    val master = "mesos://103.56.92.44:5050" //get from config - set ip of spark cluster
     new SparkConf()
           .setMaster(master)
           .setAppName("meglytics")

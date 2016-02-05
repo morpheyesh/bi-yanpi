@@ -1,6 +1,6 @@
-class ConnectorFrame {
+/*class ConnectorFrame {
 
 def connectorTable: ConnectorTable
 
 
-}
+} */

@@ -22,8 +22,11 @@
 
 package io.megam.meglytics
 
-
-import io.megam.meglytics.Constants._
+import io.megam.meglytics.core.{ YanpiDAG, SparkContextConfig }
+import io.megam.meglytics.parser._
+import scalaz._
+import Scalaz._
+import scalaz.Validation._
 import org.apache.spark._
 import org.apache.spark._
 import org.apache.spark.SparkContext._
@@ -40,19 +43,23 @@ import org.apache.spark.sql.SQLContext
 object Main extends spark.jobserver.SparkJob with SparkContextConfig {
 
   def main(args: Array[String]) {
-   val yag: YanpiDAG = YanpiParser().load(args) //i don't if this a DAG or not. ?
-   runJob(sc, dag)
+   val yag = ConfigFactory.load()
+   runJob(sc, yag)
   }
 
   def validate(sc: SparkContext, config: Config): spark.jobserver.SparkJobValidation = spark.jobserver.SparkJobValid
 
-  override def runJob(sc: SparkContext, yag): Any = {
-    for {
+  override def runJob(sc: SparkContext, config: Config): Any = { //since we are overriding runJob, the second arg is a Config
+     val yag: ValidationNel[Throwable,YanpiDAG] = new YanpiParser().load(config)
+
+/*    for {
       df  <- yag.toDataFrames()
       dm <- df.MergeAll()
     } yield {
       return dm.Query(yag.query)
     }
+*/
 
+return "test"
   }
 }

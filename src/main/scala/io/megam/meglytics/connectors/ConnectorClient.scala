@@ -1,4 +1,4 @@
-trait ConnectorClient {
+/*trait ConnectorClient {
 
   def get(url: URL, headers: Headers): GetRequest
 
@@ -6,4 +6,4 @@ trait ConnectorClient {
 
   def put(url: URL, headers: Headers, body: RawBody): PutRequest
 
-}
+} */
